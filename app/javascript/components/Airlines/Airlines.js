@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import axios from 'axios'
 import Airline from './Airline'
+import styled from 'styled-components'
 
 const Airlines = () => {
     const [airlines, setAirlines] = useState([])
@@ -17,8 +18,8 @@ const Airlines = () => {
         return (
         <Airline 
         key={item.attributes.name}
-        attributes={item}
-        </Airline>
+        attributes={item.attributes}
+        />
         )
     })
 
@@ -26,10 +27,10 @@ const Airlines = () => {
         <div className="home">
         <div className="header">
             <h1>OpenFlights</h1>
-            <div className="subheader">Honest, unibiased airline reviews.</div>
+            <div className="subheader">Honest, unbiased airline reviews.</div>
         </div>
         <div className="grid">
-            <ul>{list}</ul>        
+            {grid}       
         </div>
         </div>
     )
