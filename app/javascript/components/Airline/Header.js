@@ -1,5 +1,26 @@
 import React from 'react'
+import Styled from 'styled-components'
 
+const Wrapper = styled.div`
+    padding: 50px 100px 0;
+
+    img {
+        height: 50px;
+        width: 50px;
+        border-radius: 100%;
+        border: 1px solid rgba(0,0,0,1)     
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+`
+const TotalReviews = styled.div`
+    
+`
+const TotalOutOf = styled.div`
+    
+`
 const Header = (props) => {
    const {name, image_url, avg_score} = props.attributes
    const total = props.reviews.length
