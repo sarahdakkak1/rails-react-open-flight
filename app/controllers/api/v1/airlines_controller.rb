@@ -5,7 +5,6 @@ module Api
             
             def index
                 airlines = Airline.all
-
                 render json: AirlineSerializer.new(airlines, options).serialized_json
             end
 
