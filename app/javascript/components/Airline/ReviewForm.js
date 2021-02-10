@@ -5,15 +5,19 @@ import styled from 'styled-components'
 const RatingContainer = styled.div`
     text-align: center;
     border-radius: 4px;
-    font-size: 18px;
+    font-size:20px;
     padding: 40px 0 10px 0;
     border: 1px solid #e6e6e6;
+    margin: 20px 0;
+    padding:20px;
     background: #fff;
 `
 const RatingBox = styled.div`
     background: #fff;
     display: flex;
+    width: 100%;
     justify-content: center;
+    overflow: hidden;
     flex-direction: row-reverse;
     position: relative;
 
@@ -51,8 +55,9 @@ const Field = styled.div`
         min-height: 50px;
         border-radius: 4px;
         border: 1px solid #e6e6e6;
-        margin: 12px 0;
+        margin: 0 0 12px 0;
         padding: 12px;
+        width: 96%;
     }
 
     textarea {
@@ -65,32 +70,42 @@ const Field = styled.div`
     }
 `
 const Wrapper = styled.div`
-    background: #fff;
-    padding: 20px;
-    
+    background:white;
+    padding:20px;
+    margin-left: 15px;
+    border-radius: 0;
+    padding-bottom:80px;
+    border-left: 1px solid rgba(0,0,0,0.1);
+    height: 100vh;
+    padding-top: 100px;
+    background: black;
+    padding-right: 80px;
 `
 const SubmitBtn = styled.div`
     color: #fff;
-    background: #333;
+    background-color: #71b406;
     border-radius: 4px;
-    padding: 12px;
+    padding:12px 12px;  
     font-size: 18px;
     cursor: pointer;
     transition: ease-in-out 0.1s;
-    border: 1px solid #fff;
+    border: 1px solid #71b406;
+    width: 100%;
+    margin-top: 20px;
 
     &:hover {
         background: #fff;
-        color: #333;
+        color: #000;
         border: 1px solid #fff;
 
     }
 
 `
 const Headline = styled.div`
-    padding: 20px;
+    padding: 15px 0;
     font-size: 20px;
     font-weight: bold; 
+    color: #fff;
 `
 const RatingTitle = styled.div`
     font-size: 20px;
@@ -112,7 +127,7 @@ const ReviewForm = (props) => {
     return (
     <Wrapper>
         <form onSubmit={props.handleSubmit}>
-        <Healine>Have an experience with {props.attributes.name}? Share your review!</Healine>
+        <Headline>Have an experience with {props.attributes.name}? Share your review!</Headline>
         <Field>
             <input onChange={props.handleChange} value={props.review.title} type="text" name="title" placeholder="Review Title"/>
         </Field>
