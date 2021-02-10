@@ -6,7 +6,7 @@ module Api
             def create
                 review = airline.reviews.new(review_params)
 
-                if review.save!
+                if review.save
                     render json: ReviewSerializer.new(review).serialized_json
                 else
                     render json: { error: review.errors.messages }, status: 422

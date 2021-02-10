@@ -55,14 +55,15 @@ const handleSubmit = (e) => {
     const csrfToken = document.querySelector('[name=csrf-token]').content
     axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
 
-    const airline_id = airline.data.id
+    const airline_id = parseInt(airline.data.id)
     axios.post('/api/v1/reviews', {review, airline_id})
     .then(resp => {
      const included = [...airline.included, resp.data]
+     console.log(included)
      setAirline({...airline, included})
-     setReview({title: '', description: '', score: 0})
+     setReview({title: '', description: '', score: 0 })
     })
-    .catch(resp => {})
+    .catch(resp => console.log(resp))
 }
 
 const setRating = (score, e) => {
@@ -74,6 +75,7 @@ const setRating = (score, e) => {
 let reviews
 if (loaded && airline.included) {
     reviews = airline.included.map( (item, index) => {
+        console.log('mapping', item)
         return (
             <Review
             key={index}
