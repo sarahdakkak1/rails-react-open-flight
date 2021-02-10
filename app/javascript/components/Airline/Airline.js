@@ -55,7 +55,7 @@ const handleSubmit = (e) => {
     axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
 
     const airline_id = airline.data.id
-    axios.post('api/v1/reviews', {review, airline_id})
+    axios.post('/api/v1/reviews', {review, airline_id})
     .then(resp => {
      const included = [...airline.included, resp.data]
      setAirline({...airline, included})
@@ -63,6 +63,13 @@ const handleSubmit = (e) => {
     })
     .catch(resp => {})
 }
+
+const setRating = (score, e) => {
+    e.preventDefault()
+
+    setReview({...review, score})
+}
+
     return (
     <Wrapper>
         { 
@@ -81,6 +88,7 @@ const handleSubmit = (e) => {
             <ReviewForm
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
+                setRating={setRating}
                 attributes={airline.data.attributes}
                 review={review}
             />
