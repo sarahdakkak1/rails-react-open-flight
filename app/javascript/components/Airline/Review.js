@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import Rating from './Rating/Rating'
+
 
 const Card = styled.div`
     border: 1px solid rgba(0,0,0,1);
@@ -8,10 +10,8 @@ const Card = styled.div`
     margin: 0 20px 20px 0;
 `
 const RatingContainer = styled.div`
-
-`
-const RatingScore = styled.div`
-
+    display: flex;
+    flex-direction: row;
 `
 
 const Title = styled.div`
@@ -28,9 +28,9 @@ const Review = (props) => {
 
     return (
         <Card>
-            <div className="rating-container">
-            <div className="rating-score">{score}</div>
-            </div>
+            <RatingContainer>
+            <Rating score={score}/>
+            </RatingContainer>
             <Title>{title}</Title>
             <Description>{description}</Description>
         </Card>
