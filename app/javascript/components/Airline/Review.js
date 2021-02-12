@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Rating from './Rating/Rating'
+import Rating from '../Rating/Rating'
 
 
 const Card = styled.div`

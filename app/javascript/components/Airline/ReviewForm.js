@@ -5,11 +5,11 @@ import styled from 'styled-components'
 const RatingContainer = styled.div`
     text-align: center;
     border-radius: 4px;
-    font-size:20px;
+    font-size: 20px;
     padding: 40px 0 10px 0;
     border: 1px solid #e6e6e6;
     margin: 20px 0;
-    padding:20px;
+    padding: 20px;
     background: #fff;
 `
 const RatingBox = styled.div`
@@ -97,7 +97,6 @@ const SubmitBtn = styled.div`
         background: #fff;
         color: #000;
         border: 1px solid #fff;
-
     }
 
 `

@@ -2,8 +2,8 @@ import React, {useState, useEffect, Fragment} from 'react'
 import axios from 'axios'
 import Header from './Header'
 import ReviewForm from './ReviewForm'
-import styled from 'styled-components'
 import Review from './Review'
+import styled from 'styled-components'
 
 
 const Wrapper = styled.div`
@@ -28,10 +28,10 @@ const Main = styled.div`
 
 const Airline = (props) => {
     const [airline, setAirline] = useState({})
-    const [review, setReview] = useState({})
+    const [review, setReview] = useState([])
     const [loaded, setLoaded] = useState(false)
 
-    useEffect(() =>{
+    useEffect(() => {
         const slug = props.match.params.slug
         const url = `/api/v1/airlines/${slug}`
 
@@ -58,8 +58,7 @@ const handleSubmit = (e) => {
     const airline_id = parseInt(airline.data.id)
     axios.post('/api/v1/reviews', {review, airline_id})
     .then(resp => {
-     const included = [...airline.included, resp.data]
-     console.log(included)
+     const included = [...airline.included, resp.data.data]
      setAirline({...airline, included})
      setReview({title: '', description: '', score: 0 })
     })
@@ -68,14 +67,12 @@ const handleSubmit = (e) => {
 
 const setRating = (score, e) => {
     e.preventDefault()
-
     setReview({...review, score})
 }
 
 let reviews
 if (loaded && airline.included) {
     reviews = airline.included.map( (item, index) => {
-        console.log('mapping', item)
         return (
             <Review
             key={index}
